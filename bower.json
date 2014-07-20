@@ -1,0 +1,27 @@
+{
+  "name": "tw",
+  "description": "Scaffold for a website using bb-server and html-builder",
+  "homepage": "https://github.com/michieljoris/tw",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michieljoris/tw.git"
+  },
+  "authors": [
+    "Michiel van Oosten <mail@axion5.net>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.7.2",
+    "normalize.css": "~3.0.0"
+  },
+  "devDependencies": {},
+  "private": false,
+  "version": "0.0.1"
+}
