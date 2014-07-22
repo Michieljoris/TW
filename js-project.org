@@ -1,9 +1,0 @@
-* TODO Remove files from www/js and www/css and add bower dependencies
-* TODO Add questions to init:
-Include bb-server?
-Inlcude html-builder?
-Include capjs? 
-And setup project accordingly
-* ask for port (and host?) set config accordingly for web project
-  
-* Marsrover  
