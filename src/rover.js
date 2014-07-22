@@ -77,7 +77,7 @@ var exampleCommands = {
     }
 };
 
-function execute(rovers, r, move) {
+function execute(rovers, rover, move) {
     return move.reduce(
         function(r, a) {
             console.log('Applying ' + a + ' to ' , prettyPrint(r));
@@ -85,14 +85,14 @@ function execute(rovers, r, move) {
             var n = parseInt(a);
             if (isNaN(n)) throw Error('Illegal move!!');
             return r.commands.move(r, n);
-        }, rovers[r]);
+        }, rover);
 }
 
 function test() {
     var grid = createGrid(10,10);
 
-    var move = 'LMLMLMLMM'.split('');
-    var move2 = 'MMRMMRMRRM'.split('');
+    var commands1 = 'LMLMLMLMM'.split('');
+    var commands2 = 'MMRMMRMRRM'.split('');
     
     var i = 0;
     var rovers = [
@@ -100,8 +100,8 @@ function test() {
         { x: 3, y: 3, orientation : 'E', grid: grid, commands: exampleCommands }
     ].map(function(r) { r.id = i++; return r; }).map(createRover);
 
-    console.log('Rover', prettyPrint(execute(rovers, 0, move))); 
-    console.log('Rover', prettyPrint(execute(rovers, 1, move2)));
+    console.log('Rover', prettyPrint(execute(rovers, rovers[0], commands1))); 
+    console.log('Rover', prettyPrint(execute(rovers, rovers[1], commands2)));
 
     function info(r) {
         return { x: r.x, y: r.y, orientation: compass[r.orientation] };
@@ -115,4 +115,4 @@ function test() {
 test();
 
 
-//TODO write in oop style (typescript, or prototype, yuck)
+//TODO write in oop style (typescript, or using prototype, yuck)
