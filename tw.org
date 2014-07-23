@@ -52,3 +52,87 @@ After successfull signin $scope.signedIn is the user's email address
 
 * rover
   
+* merchant 
+  http://www.careercup.com/question?id=4904931328786432
+  
+* salestax 
+  file:///home/michieljoris/tmp/TW/TW/Case%20Study%20On%20Sales%20Tax%20Problem%20%28Java%20in%20General%20forum%20at%20JavaRanch%29.html
+  file:///home/michieljoris/tmp/TW/TW/Java%20Technology%20Blog%20%20Design%20Problem%20Sales%20Tax%20Problem%20Statement.html
+  file:///home/michieljoris/tmp/TW/TW/mikechau%20thoughtworks-sales-tax%20%C2%B7%20GitHub.html
+  file:///home/michieljoris/tmp/TW/TW/Sales%20Tax%20problem%20form%20thoughtworks%20for%20Interview%20%20%20Techruminations%27s%20Blog.html
+  PROBLEM ONE : SALES TAXES
+Basic sales tax is applicable at a rate of 10% on all goods, except books, food,
+and medical products that are exempt. Import duty is an additional sales tax
+applicable on all imported goods at a rate of 5%, with no exemptions.
+
+When I purchase items I receive a receipt which lists the name of all the items
+and their price (including tax), finishing with the total cost of the items,
+and the total amounts of sales taxes paid.  The rounding rules for sales tax are
+that for a tax rate of n%, a shelf price of p contains (np/100 rounded up to
+the nearest 0.05) amount of sales tax.
+
+Write an application that prints out the receipt details for these shopping baskets...
+INPUT:
+Input 1:
+1 book at 12.49
+1 music CD at 14.99
+1 chocolate bar at 0.85
+
+Input 2:
+1 imported box of chocolates at 10.00
+1 imported bottle of perfume at 47.50
+
+Input 3:
+1 imported bottle of perfume at 27.99
+1 bottle of perfume at 18.99
+1 packet of headache pills at 9.75
+1 box of imported chocolates at 11.25
+
+OUTPUT
+Output 1:
+1 book: 12.49
+1 music CD: 16.49
+1 chocolate bar: 0.85
+Sales Taxes: 1.50
+Total: 29.83
+
+Output 2:
+1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15
+
+Output 3:
+1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+1 imported box of chocolates: 11.85
+Sales Taxes: 6.70
+Total: 74.68
+  
+* conway's game of life
+   file:///home/michieljoris/tmp/TW/TW/Conway%27s%20Game%20of%20Life%20-%20Wikipedia,%20the%20free%20encyclopedia.html
+   http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/graphics-programming-black-book-r1698
+   http://stackoverflow.com/questions/40485/optimizing-conways-game-of-life
+   http://en.wikipedia.org/wiki/Hashlife
+   
+* airlines  
+  nterview Question – An airlines company has several planes of the same type.Each plane has a seating capacity of 24 - 3 rows and 8 seats in each row split has shown.
+[] [] [] [] [] [] [] []
+
+If 4 people book-allocate 4 seats in middle row.Else 2 on the right and 2 on the left.
+if 3 people book- id middle section is empty,allocate there continuously.Else go to next row middle section.
+if 2 people book-allocate the edge seats.
+if 1 person has booked -then allocate whatever free seat available.
+
+eg-input 4
+output-1c 1d 1e 1f
+
+input-3
+output- 2c 2d 2e
+
+input-2
+output-1a 1b.
+This to be done using c++   Answer QuestionXS
+* conference
+  file:///home/michieljoris/tmp/TW/TW/Solution%20for%20Tech%20Problems%20%20Problem%20Statement%20-%20Conference%20Track%20Management.html
