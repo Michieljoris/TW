@@ -53,7 +53,8 @@
         func(
             function(moduleid) { //require
                 var requiredIndex = m[index].resolve[moduleid];
-                if (!requiredIndex) error('resolve', moduleid, m[index].filename);
+                if (typeof requiredIndex === "undefined")
+                    error('resolve', moduleid, m[index].filename);
                 return require(requiredIndex);
             },
             data = m[index].d = { exports: {} }, //module
@@ -72,7 +73,7 @@
     //Registers module with denodify on script load.
     global.denodify = function (func, index) { 
         var module = m[index];
-        if (!module) error('incomplete', index);
+        if (typeof module === "undefined") error('incomplete', index);
         m[index].f = func;
     };
     
@@ -102,8 +103,14 @@
 //module info
     var m = {
 	"0": {
-		"filename": "scripts/main.js",
+		"filename": "_node_modules/4c15bbb4021c3da32a2188cf39e8fe03_conway.js",
 		"resolve": {}
+	},
+	"1": {
+		"filename": "scripts/main.js",
+		"resolve": {
+			"./conway.js": 0
+		}
 	}
 };
 })(this);

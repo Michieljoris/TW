@@ -115,7 +115,7 @@ var exports = {
     //to generate a string to save to the file defined in 'out'.
     ,partials: {
         ids: {
-            title: '<title>Deploy demo</title>'
+            title: '<title>TW</title>'
             ,skewer: develop_mode ? '<script src="http://localhost:9090/skewer"></script>' : ' '
             // ,recaptcha: '<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>'
             // ,fragment: '<meta name="fragment" content="!">'
@@ -139,7 +139,7 @@ var exports = {
             id: 'linkBlock',
             files:  [
                 // 'bower/normalize.css/normalize.css'
-                // ,'bower/bootstrap/dist/css/bootstrap.css'
+                'bower/bootstrap/dist/css/bootstrap.css'
                 // ,'bower/foundation/css/foundation.css'
                 // ,'bower/jquery-ui/jquery-ui.custom.css'
                 // ,'bower/angular-ui/build/angular-ui.css'
@@ -171,7 +171,6 @@ var exports = {
                 id: 'jsBlock',
                 files: [
                     // 'bower/jquery/dist/jquery.js' //v2.1.0
-                    //,'bower/bootstrap/dist/js/bootstrap.js'
                     // ,'bower/foundation/js/foundation.js'
                     // ,'bower/angular/angular.js'
                     // ,'bower/angular-ui/build/angular-ui.js'
@@ -193,7 +192,9 @@ var exports = {
                     // ,'angular.js'
                     // ,'test.coffee'
                     "bower/jquery/dist/jquery.js"
-                    // "vendor/jquery-1.6.2.js"
+                    ,'bower/bootstrap/dist/js/bootstrap.js'
+                    ,"bower/bacon/dist/Bacon.min.js"
+                    ,"bower/mori/mori.js"
                     ,"bower/modernizr/modernizr.js"
                     ,"bower/logthis/logthis.js"
                     // ,"bower/ractive/ractive.js"
@@ -219,7 +220,6 @@ var exports = {
                     //and bb-server needs to know a requested script is a module
                     //because it needs to denodify.wrap it.
                     // ,'modules/mymodule.nm.js'
-                    
                     ,['main.js']
                     ,"start.js"
                     // ,'cape.js'

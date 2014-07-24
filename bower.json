@@ -21,9 +21,12 @@
     "logthis": "0.1.7",
     "modernizr": "~2.7.2",
     "normalize.css": "~3.0.0",
-    "jquery": "*"
+    "jquery": "*",
+    "bacon": "*",
+    "mori": "*",
+    "bootstrap": "*"
   },
   "devDependencies": {},
   "private": false,
-  "version": "0.0.1"
+  "version": "0.0.2"
 }

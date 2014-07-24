@@ -191,21 +191,21 @@ var options = {
     // }
     
     //attaches session data to requests
-    ,sessions: {
-        expires:30 
+    // ,sessions: {
+    //     expires:30 
         
-        // ,store: 'mysql'
-        ,store: 'memory'
-        // ,storeOpts: {
-        //     //options for mysql, memory doesn't need any
-        // }
-    }
+    //     // ,store: 'mysql'
+    //     ,store: 'memory'
+    //     // ,storeOpts: {
+    //     //     //options for mysql, memory doesn't need any
+    //     // }
+    // }
     //use persona to authenticate
-    ,persona: {
-        authorized: ['mail@axion5.net', 'andrea@firstdoor.com.au']
-        ,verbose: true 
-        ,audience: develop_mode ? "localhost:9001" : "www.firstdoor.com.au" 
-    } 
+    // ,persona: {
+    //     authorized: ['mail@axion5.net', 'andrea@firstdoor.com.au']
+    //     ,verbose: true 
+    //     ,audience: develop_mode ? "localhost:9001" : "www.firstdoor.com.au" 
+    // } 
     
     //server api path:
     ,api: '__api'

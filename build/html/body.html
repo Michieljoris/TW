@@ -1,13 +1,32 @@
 <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+<div class="container-fluid">
+  <div class="row" id="">
+    <div class="col-xs-12" id="">
+      <canvas id="canvas" ></canvas>
+    </div>
+  </div>
+  <div class="row" id="">
+    <div class="col-xs-8" id="">
 
-
-<div id="hello_world--">
-
-    Open up inspector to see output from the included denodified node
-    module.
-    
-    Run bin/serve in one terminal and bin/build in another. Update the source of
-    the site, the site will get rebuilt and the page refreshed.
+      <button class="btn btn-info">Start</button>
+      <button class="btn btn-info">Stop</button>
+      <button class="btn btn-info">Step</button>
+      <button class="btn btn-info">Clear</button>
+    </div>
+    <div class="col-xs-4" id="">
+      Grid:
+      <div class="btn-group">
+        <button id="grid-on"type="button" class="btn btn-default active">On</button>
+        <button type="button" class="btn btn-default">Off</button>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="">
+    <div class="col-xs-12" id="">
+      Step count <span id="step">0</span><br>
+      Steps/second: <span id="step">0</span>
+    </div>
+  </div>
 </div>
