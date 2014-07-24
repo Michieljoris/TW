@@ -192,15 +192,12 @@ var exports = {
                     // ,'router'
                     // ,'angular.js'
                     // ,'test.coffee'
-                    // "bower/jquery/dist/jquery.js"
-                    "vendor/jquery-1.6.2.js"
+                    "bower/jquery/dist/jquery.js"
+                    // "vendor/jquery-1.6.2.js"
                     ,"bower/modernizr/modernizr.js"
-                    ,"bower/arbor/lib/arbor.js"
                     ,"bower/logthis/logthis.js"
-                    ,"bower/ractive/ractive.js"
-                    ,"bower/vue/dist/vue.js"
-                    ,"renderer.js"
-                    ,"graphics.js",
+                    // ,"bower/ractive/ractive.js"
+                    // ,"bower/vue/dist/vue.js"
                     //The following will be substitud with the list of required
                     //modules, in the proper order, also the module enabler
                     //script will be added before the first module in every
@@ -223,7 +220,7 @@ var exports = {
                     //because it needs to denodify.wrap it.
                     // ,'modules/mymodule.nm.js'
                     
-                    ['main.js']
+                    ,['main.js']
                     ,"start.js"
                     // ,'cape.js'
                     

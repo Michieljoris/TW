@@ -1,10 +1,10 @@
 {
-  "name": "tw",
+  "name": "deploy-demo",
   "description": "Scaffold for a website using bb-server and html-builder",
-  "homepage": "https://github.com/michieljoris/tw",
+  "homepage": "https://github.com/michieljoris/deploy-demo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/michieljoris/tw.git"
+    "url": "https://github.com/michieljoris/deploy-demo.git"
   },
   "authors": [
     "Michiel van Oosten <mail@axion5.net>"
@@ -18,8 +18,10 @@
     "tests"
   ],
   "dependencies": {
+    "logthis": "0.1.7",
     "modernizr": "~2.7.2",
-    "normalize.css": "~3.0.0"
+    "normalize.css": "~3.0.0",
+    "jquery": "*"
   },
   "devDependencies": {},
   "private": false,

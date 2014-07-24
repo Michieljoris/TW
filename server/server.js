@@ -32,7 +32,7 @@ var options = {
     // the url matches a path on the server relative to the
     // root. Assign an array of paths to limit listing to the listed
     // paths (relative to the root) eg. ['/lib']. Defaults to true. 
-    ,dir: false
+    ,dir: true
     
     // If index.html is found in an allowable directory it is sent
     // over instead of the directory listing. Assign a string to look
@@ -108,12 +108,14 @@ var options = {
     // ,zip: true //compress when enconding is accepted by client
     //or for more finegrained control define the recast option instead:
     ,recast: {
-        // transpile: ['jade', 'less', 'stylus', 'sweetjs',
-        //             // 'typescript', 'coffeescript',
-        //              'inject',
-        //              'denodify',
-        //             'markdown' ], 
-        transpile: []  //TODO add all current supported file types
+        transpile: [
+            // 'jade', 'less', 'stylus', 'sweetjs',
+            //             // 'typescript', 'coffeescript',
+            //              'inject',
+            'denodify'
+            //             'markdown'
+        ] 
+        // transpile: []  //TODO add all current supported file types
         
         ,minify: !develop_mode ? ['js', 'css' ] : [] //js, css, html
         ,zip:!develop_mode ? /text|javascript|json/ : ''//regex on the mimetype

@@ -1,15 +1,30 @@
-TW
+tw
 --------
 
-Solutions to the coding challenges given out on application for a job at
-ThoughtWorks.
+[Description]
 
-They seem a OOP/Java/C++ shop, and I don't really feel like writing verbose,
-cumbersome, inflexible OOP Java style code, especially when these challenges can
-be elegantly met in a functional style using the module/function rather
-then the object/method 'pattern'.
+Install:
 
-See the 'src' folder, the rest is boilerplate so that I can easily visualize
-things in a browser if I need/want to.
+    npm install tw
+	
+Add dependency to your project with
+
+    "tw": "git@github.com/Michieljoris/tw"
+	
+or
+
+	"tw": "*"
+
+Require in a module:
+
+    var tw = require('tw');
+
+Use:
+
+See [documentation](https://rawgithub.com/Michieljoris/tw/master/docs/tw.html).
+
+
+
+
 
 

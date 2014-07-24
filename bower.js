@@ -31,7 +31,7 @@ module.exports = {
     //
     // Leave off redundant affixes like `node-package` or `package-js`. 
     // We know it is JavaScript for Node.
-    "name": "tw",
+    "name": "deploy-demo",
     // A single line, or sometimes slightly longer, description of our package.
     "description": "Scaffold for a website using bb-server and html-builder",
     // [npm](http://npmjs.org) enforces the X.Y.Z semantic version 
@@ -41,12 +41,12 @@ module.exports = {
     //If this option is falsy, the version in the package.json is bumped
     // "version": "0.1.0",
     // URL to the homepage for this package.
-    "homepage": "https://github.com/michieljoris/tw",
+    "homepage": "https://github.com/michieljoris/deploy-demo",
     
     // Where is the source of truth for this code, and what type of repo is it?
     "repository": {
         "type": "git",
-        "url": "https://github.com/michieljoris/tw.git"
+        "url": "https://github.com/michieljoris/deploy-demo.git"
     },
     // Every package should have at least one author. There are a couple of
     // formats for the author. I prefer the explicit object format as follows:
@@ -75,7 +75,7 @@ module.exports = {
     // If there is a file that should be loaded when require()ing this 
     // folder-as-a-package, declare this file here, relative to our package 
     // structure.
-    // "main": "lib/tw.js",
+    // "main": "lib/deploy-demo.js",
     
     // What other modules/libraries do we require for our own module?
     // The beauty of this dependencies block is that these modules will
@@ -88,14 +88,17 @@ module.exports = {
     // `devDependencies` block for the way to include dependencies.
     "dependencies": {
         //node
-        // "angular": "~1.2.14",
+        "logthis": "0.1.7",
         // "angular-ui": "~0.4.0",
         "modernizr": "~2.7.2",
         //amd
         // "bootstrap": "~3.1.1",
         // "foundation": "~5.2.0",
         // "jquery-ui": "~1.10.4",
-        "normalize.css": "~3.0.0"
+        "normalize.css": "~3.0.0",
+        // "arbor": "*",
+        "jquery": "*"
+        
         
     },
     // What dependencies are useful only for developers?
