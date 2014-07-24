@@ -115,7 +115,7 @@ var exports = {
     //to generate a string to save to the file defined in 'out'.
     ,partials: {
         ids: {
-            title: '<title>Cape</title>'
+            title: '<title>Deploy demo</title>'
             ,skewer: develop_mode ? '<script src="http://localhost:9090/skewer"></script>' : ' '
             // ,recaptcha: '<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>'
             // ,fragment: '<meta name="fragment" content="!">'
@@ -175,10 +175,14 @@ var exports = {
                     // ,'bower/foundation/js/foundation.js'
                     // ,'bower/angular/angular.js'
                     // ,'bower/angular-ui/build/angular-ui.js'
-                    // ,'bower/ui-bootstrap-tpls-0.2.0.js'
-                    // ,'bower/modernizer/modernizr.js'
-                    // ,'bower/jquery-ui/jquery-ui.js'
-                    
+                    // ,'bower/logthis/logthis.js'
+                    // ,'bower/modernizr/modernizr.js'
+                    // ,'bower/jquery/dist/jquery.min.js'
+                    // ,'bower/arbor/lib/arbor.js'
+                    // ,'graphics.js',
+                    // ,'renderer.js'
+                    // ,'main.js'
+                   
                     // ,'vendor/noconsole.js'
                     //,'vendor/jquery-1.6.2.min.js'
                     //,'vendor/jquery-1.8.3.min.js'
@@ -188,7 +192,15 @@ var exports = {
                     // ,'router'
                     // ,'angular.js'
                     // ,'test.coffee'
-                    
+                    // "bower/jquery/dist/jquery.js"
+                    "vendor/jquery-1.6.2.js"
+                    ,"bower/modernizr/modernizr.js"
+                    ,"bower/arbor/lib/arbor.js"
+                    ,"bower/logthis/logthis.js"
+                    ,"bower/ractive/ractive.js"
+                    ,"bower/vue/dist/vue.js"
+                    ,"renderer.js"
+                    ,"graphics.js",
                     //The following will be substitud with the list of required
                     //modules, in the proper order, also the module enabler
                     //script will be added before the first module in every
@@ -211,8 +223,9 @@ var exports = {
                     //because it needs to denodify.wrap it.
                     // ,'modules/mymodule.nm.js'
                     
-                    ,['modules/mymodule.js']
-                    ,'cape.js'
+                    ['main.js']
+                    ,"start.js"
+                    // ,'cape.js'
                     
                 ],
                 path: 'scripts/'
@@ -251,11 +264,11 @@ var exports = {
                ,src: 'html/body.html' 
                ,tagIdPostfix: '--' //can be overridden per template
                ,mapping: {
-                   hello_world: "hello_world"
+                   // hello_world: "hello_world"
                }
              }
             ,{  
-               src: 'html/basicAngularPage.html'
+               src: 'html/basicPage.html'
                ,tagIdPostfix: '' //can be overridden per template
                ,pathOut: ''
                ,out: 'www/index.html' //optional, relative to root
@@ -272,14 +285,15 @@ var exports = {
                //want to retrieve cachified versions. Include the resources
                //under cachify.list
                ,mapping: {
-                   head: ['title', 'meta',  'html/ieshim','skewer',
+                   head: ['title', 'meta',  'html/ieshim',//'skewer',
                           // 'firebug',
                           'headJsBlock',
                           'linkBlock'
                           ,'cachify'
                          ],
                   
-                   "ng:app": ['body', 'jsBlock'
+                   "body": ['body', 'jsBlock'
+                            
                               // ,'html/google_analytics.html'
                              ]
                }
