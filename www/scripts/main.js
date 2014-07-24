@@ -27,14 +27,18 @@ $("#canvas").attr('width', width);
 $("#canvas").attr('height', height);
 
 function drawGrid(w, h, size) {
+    
     ctx.beginPath();
-    var rows = h/size;
-    var columns = w/size;
-    for (var i=0; i< rows; i++) {
+    var nRows = Math.floor(h/size);
+    var nColumns = Math.floor(w/size);
+    log(nRows, nColumns);
+    w = nColumns * size;
+    h = nRows * size;
+    for (var i=0; i<= nRows; i++) {
         ctx.moveTo(0,i*size);
         ctx.lineTo(w,i*size);
     } 
-    for (i=0; i< columns; i++) {
+    for (i=0; i<= nColumns; i++) {
         ctx.moveTo(i*size, 0);
         ctx.lineTo(i*size, h);
         
@@ -44,7 +48,7 @@ function drawGrid(w, h, size) {
     
     
 }
-drawGrid(width, height, 20);
+drawGrid(width, height, 40);
 
 function cell(x, y, state) {
     

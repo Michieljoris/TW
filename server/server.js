@@ -119,7 +119,7 @@ var options = {
         
         ,minify: !develop_mode ? ['js', 'css' ] : [] //js, css, html
         ,zip:!develop_mode ? /text|javascript|json/ : ''//regex on the mimetype
-        ,verbose: develop_mode
+        // ,verbose: develop_mode
         
         // ,inject: {
         //     'index.html': ['test']

@@ -144,6 +144,7 @@ var exports = {
                 // ,'bower/jquery-ui/jquery-ui.custom.css'
                 // ,'bower/angular-ui/build/angular-ui.css'
                 
+                ,"slider.css"
                 // ,'vendor/h5bp.css'
                 // ,'vendor/checkboxes.css'
                 
@@ -197,6 +198,7 @@ var exports = {
                     ,"bower/mori/mori.js"
                     ,"bower/modernizr/modernizr.js"
                     ,"bower/logthis/logthis.js"
+                    ,"slider/js/bootstrap-slider.js"
                     // ,"bower/ractive/ractive.js"
                     // ,"bower/vue/dist/vue.js"
                     //The following will be substitud with the list of required
