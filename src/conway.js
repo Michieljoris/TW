@@ -94,6 +94,7 @@ function step() {
 
 //Initialize world with height, width and some live cells
 function init(someWidth, someHeight, someLiveCells) {
+    // console.log('in init in conway: ', someWidth, someHeight, someLiveCells);
     cells = {};
     changed = {};
     width = someWidth;
@@ -111,3 +112,9 @@ module.exports = {
     init: init,
     step: step
 };
+//Please refresh the browser to get back to the app
+var example = [ [3,1],[3,2],[3,3] ];
+
+// init(12,8, example);
+// var result = step();
+// console.log(result);
