@@ -1,21 +1,23 @@
 <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
-<div class="container-fluid">
+<div class="hide" id="export"> Exported bla bla</div>
+<div id="main" class="container-fluid">
   <div class="row" id="">
-    <div class="col-xs-12" id="">
-      <canvas id="canvas" ></canvas>
-    </div>
-  </div>
-  <div class="row" id="">
-    <div class="col-xs-8" id="">
+    <div class="col-xs-10" id="">
 
-      <button class="btn btn-info">Start</button>
-      <button class="btn btn-info">Stop</button>
-      <button class="btn btn-info">Step</button>
-      <button class="btn btn-info">Clear</button>
+      <button id="start" class="btn btn-info">Start</button>
+      <button id="stop" class="btn btn-info">Stop</button>
+      <button id="step" class="btn btn-info">Step</button>
+      <button id="reset" class="btn btn-info">Reset</button>
+      <button id="clear" class="btn btn-info">Clear</button>
+      <button id="save" class="btn btn-info">Save</button>
+      <button id="recallPrev" class="btn btn-info">Re-</button>
+      <button id="recallNext" class="btn btn-info">call</button>
+      <button id="delete" class="btn btn-info">Delete</button>
+      <button id="export" class="btn btn-info">Export</button>
     </div>
-    <div class="col-xs-4" id="">
+    <div class="col-xs-2" id="">
       Grid:
       <div class="btn-group">
         <button id="grid-on"type="button" class="btn btn-default active">On</button>
@@ -25,9 +27,28 @@
   </div>
   <div class="row" id="">
     <div class="col-xs-12" id="">
-      Step count <span id="step">0</span><br>
+      Step count <span id="step">0</span>
       Steps/second: <span id="step">0</span>
-      <div class="slider"></div>
+    </div>
+  </div>
+  <div class="row" id="">
+    <div class="col-xs-2" id=""> Cell size: </div>
+    <div class="col-xs-10" id="">
+      <div id="cell-size" class="slider" style="width:300px;"></div>
+    </div>
+  </div>
+  <div class="row" id="">
+    <div class="col-xs-2" id=""> Height/width:</div>
+    <div class="col-xs-10" id="">
+      <div id="grid-size-width" class="slider" style="width:300px;"></div>
+    </div>
+  </div>
+  <div class="row" id="">
+    <div style="width:10px;" class="col-xs-1" id="">
+      <div id="grid-size-height" class="slider" style="width:300px;"></div>
+    </div>
+    <div class="col-xs-11" id="">
+      <canvas id="canvas" ></canvas>
     </div>
   </div>
 </div>
