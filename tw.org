@@ -1,5 +1,5 @@
 * DONE rover
-* merchant 
+* DONE merchant 
   http://www.careercup.com/question?id=4904931328786432
   MERCHANT'S GUIDE TO THE GALAXY 
 

@@ -44,9 +44,9 @@ function wc(line) {
     return line.split(' ').filter(function(e) { return e.length; }).length;;
 }
 
-function regExpMatch(pattern, line, x) {
+function regExpMatch(pattern, line, irrelevant) {
     var units = [];
-    var n = wc(line) - x - 1;
+    var n = wc(line) - irrelevant - 1;
     for (var i = 0; i < n; i++)
         units.push(unit);
     pattern = pattern.slice(0,1)
@@ -93,7 +93,7 @@ var parsers = [
         if (match)  {
             var quantity = convert(match.slice(1));
             if (quantity < 0) return null;
-            return match.slice(1).join(' ') + ' is ' + convert(match.slice(1));
+            return match.slice(1).join(' ') + ' is ' + quantity;
         }
         return null;
     },
@@ -116,10 +116,9 @@ var parsers = [
 function process(input) {
     buildPatterns();
     return input.map(function(line, i) {
-            var result;
+        var result;
         parsers.some(function(parser) {
-            result = parser(line);
-            return result;
+            return result = parser(line);
         });
         return result;
     }).filter(function(r) {
