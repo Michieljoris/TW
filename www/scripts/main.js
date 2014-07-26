@@ -259,7 +259,13 @@ var handler = {
             // $("#step").attr('disabled', 'disabled');
             var startTime = new Date().getTime();;
             seconds = 0;
+            
+            // var speed = 60;
             interval = setInterval(function() {
+                // while (step%speed < speed-1) {
+                //     step++;
+                //     click();
+                // }
                 step++;
                 var now = new Date().getTime();
                 seconds = (now - startTime)/1000;
