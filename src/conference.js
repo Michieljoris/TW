@@ -1,4 +1,22 @@
 var fs = require('fs-extra');
+var util = require('util');
+
+var sessionTypes = [
+    { start: { hour: 9, minutes: 0 }, when: 'am', length: 180 , priority: 0 },
+    { start: { hour:13, minutes:0 }, when: 'pm', length : 240, priority: 1  }
+];
+
+function createSessions(nDays) {
+    var sessions = [];
+    for (var i=0; i<nDays; i++) {
+        sessionTypes.forEach(function(sessionType) {
+            var session = Object.create(sessionType);
+            session.day = i + 1; session.talks = []; session.free = session.length;
+            sessions.push(session);
+        });
+    }
+    return sessions;
+}
 
 function parse(line) {
     var words = line.split(' ').filter(function(w) {
@@ -11,29 +29,133 @@ function parse(line) {
             parseInt(length.slice(0, length.length -3))
     };
 }
+
+function select(sessions) {
+    sessions.sort(function(s1, s2) {
+        var onFree =  s1.free < s2.free ? 1 : s1.free > s2.free ? -1 : 0;
+        if (onFree) return onFree;
+        var onPriority =  s1.priority < s2.priority ? 1 : s1.priority > s2.priority ? -1 : 0;
+        return onPriority;
+    });
+    return sessions[0];
+}
+
+function addMinutes(time, minutes) { //time is in hours and minutes, offset in minutes
+    return {
+        hour: time.hour + Math.floor((time.minutes + minutes)/60),
+        minutes : (time.minutes + minutes)%60
+    };
+}
+
+function format(hours, minutes) {
+    return (hours < 10 ? '0' + hours : hours)+ ':' +
+        (minutes < 10 ? '0' + minutes : minutes);
+}
+
+function print(sessions) {
+    var day = 0;
+    sessions.forEach(function(session) {
+        if (session.day !== day) {
+            day = session.day;
+            console.log('\ntrack ' + day);   
+        }
+        var start = session.start;
+        var talks = session.talks.map(function(talk) {
+            var str = format(start.hour, start.minutes) + session.when+ ' ' + talk.title; 
+            start = addMinutes(start, talk.length);
+            console.log(str);
+            return str;
+        });
+        if (session.when === 'am') {
+            talks.push('12:00pm lunch');   
+            console.log(talks[talks.length-1]);
+        }
+        else {
+            var str = format(start.hour, start.minutes) + session.when+ ' ' + 'networking event'; 
+            talks.push(str);   
+            console.log(talks[talks.length-1]);
+        }
+        return talks;
+    });
+}
+
+function assign(sessions, talks) {
+    var sessionsCopy = sessions.slice(0);
+    talks.forEach(function(talk) {
+        var session = select(sessionsCopy);
+        session.talks.push(talk);
+        session.free -= talk.length;
+        if (session.free < 0) throw Error('This isn\'t working...');
+    });
+}
+
+function assign2(sessions, talks) {
+    //TODO try a depth or breadth first seach
+    var combinations = [];
+    var session = sessions[0];
+    var free = session.length;
+    var d = 0;
+    function fill(from, combo) {
+        d++;
+        // if (d>15000) return;
+        var end = true;
+        for (var i = from; i< talks.length; i++) {
+            var talk = talks[i];
+            if (free - talk.length >= 0)  {
+                // talks.splice(i,1);
+                end = false;
+                free -= talk.length;
+                combo.push(talk);
+                fill(i+1, combo);
+                combo.pop();
+                free += talk.length;
+                // talks.splice(i,0,talk);
+            }
+        }
+        if (end) {
+            combinations.push(combo.slice(0));   
+            // console.log('pushing ', combo, ' ON\n ' , combinations);
+        }
+    }
+    fill(0, []);
+    // console.log(util.inspect(combinations, {depth: 10, colors:true }));
+    console.log(combinations.length);
     
-function process(input) {
+}
+    
+function process(input, days) {
+    var sessions = createSessions(days);
     var talks = input.map(function(line, i) {
         return parse(line);
     }).sort(function(t1, t2) {
         return t1.length < t2.length ? 1 : t1.length > t2.length ? -1 : 0;
     });
+    var totalLength = talks.reduce(function(p, n) {
+        return p + n.length;
+    }, 0);
+    var totalAvailable= sessions.reduce(function(p, n) {
+        return p + n.length;
+    }, 0);
+    if (totalLength > totalAvailable)
+        throw Error('Not enough time available to slot in the talks!!!',
+                    totalLength, totalAvailable);
+    assign2(sessions, talks);
+    // print(sessions);
 }
-                     
-var input = fs.readFileSync('./conference-input.txt', { encoding: 'utf8' }).split('\n');
 
+var input = fs.readFileSync('./conference-input.txt', { encoding: 'utf8' }).split('\n');
 input = input.slice(0, input.length -1);
 
-var output = process(input);
-
-console.log('\n', output);
-
+process(input, 2);
 
 // * conference
 //   file:///home/michieljoris/tmp/tw/tw/solution%20for%20tech%20problems%20%20problem%20statement%20-%20conference%20track%20management.html
 //   problem statement - conference track management
 
-// you are planning a big programming conference and have received many proposals which have passed the initial screen process but you're having trouble fitting them into the time constraints of the day -- there are so many possibilities! so you write a program to do it for you.
+// you are planning a big programming conference and have received many
+// proposals which have passed the initial screen process but you're having
+// trouble fitting them into the time constraints of the day -- there are so
+// many possibilities! so you write a program to do it for you.
 
 // · the conference has multiple tracks each of which has a morning and afternoon session.
 // · each session contains multiple talks.
@@ -44,7 +166,9 @@ console.log('\n', output);
 // · all talk lengths are either in minutes (not hours) or lightning (5 minutes).
 // · presenters will be very punctual; there needs to be no gap between sessions.
 
-// note that depending on how you choose to complete this problem, your solution may give a different ordering or combination of talks into tracks. this is acceptable; you don’t need to exactly duplicate the sample output given here.
+// note that depending on how you choose to complete this problem, your solution
+// may give a different ordering or combination of talks into tracks. this is
+// acceptable; you don’t need to exactly duplicate the sample output given here.
 
 // test input :-
 // ------------
