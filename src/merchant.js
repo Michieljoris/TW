@@ -128,7 +128,7 @@ function process(input) {
     });
 }
 
-var input = fs.readFileSync('./merchant-input.txt', { encoding: 'utf8' }).split('\n')
+var input = fs.readFileSync('./merchant-input.txt', { encoding: 'utf8' }).split('\n');
 input = input.slice(0, input.length -1);
 
 var output = process(input);

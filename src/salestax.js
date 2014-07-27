@@ -1,46 +1,57 @@
 var baskets = [
-    [ { product: 'book', quantity: 1, price: 12.49, type: 'book'},
-      { product: 'music CD' , quantity: 1, price: 14.99  },
-      { product: 'chocolate bar', quantity: 1 , price: 0.85 , type: 'food'}
+    [ { product: 'book', quantity: 1, priceInDollars: 12.49, type: 'book'},
+      { product: 'music CD' , quantity: 1, priceInDollars: 14.99  },
+      { product: 'chocolate bar', quantity: 1 , priceInDollars: 0.85 , type: 'food'}
     ],
-    [ { product: 'box of chocolates', quantity: 1, price: 10.00, imported: true, type: 'food'},
-      { product: 'bottle of perfume' , quantity: 1, price: 47.50, imported: true}
+    [ { product: 'box of chocolates', quantity: 1, priceInDollars: 10.00, imported: true, type: 'food'},
+      { product: 'bottle of perfume' , quantity: 1, priceInDollars: 47.50, imported: true}
     ],
-    [ { product: 'bottle of perfume' , quantity: 1, price: 27.99, imported: true },
-      { product: 'bottle of perfume' , quantity: 1, price: 18.99 },
-      { product: 'packet of headache pills' , quantity: 1, price: 9.75,
+    [ { product: 'bottle of perfume' , quantity: 1, priceInDollars: 27.99, imported: true },
+      { product: 'bottle of perfume' , quantity: 1, priceInDollars: 18.99 },
+      { product: 'packet of headache pills' , quantity: 1, priceInDollars: 9.75,
         type: 'medical product' },
-      { product: 'box of chocolates', quantity: 1, price: 11.25, imported: true, type: 'food' }
+      { product: 'box of chocolates', quantity: 1, priceInDollars: 11.25, imported: true, type: 'food' }
     ]
 ] 
   
 var exempt = ['book', 'food', 'medical product'];
 
-function roundUp(p) {
-    
-    return p;
-};
-  
+function roundUp(p, nearest) {
+    return Math.ceil(p/nearest) * nearest; //in cents, no fractions of cents at all
+}
+
+//not the most elegant of solutions:
+var padding = ['00', '0', ''];
+function printCurrency(c) {
+    //p should be of type integer, we can round it perhaps to make sure
+    var str = '' + c/100;
+    var dotPos = str.indexOf('.'); //should choose locale dependant decimal separator really
+    dotPos = str.length - (dotPos < 0 ? 2: dotPos)  -1
+    return str + padding[dotPos]
+}
+
 function calculate(baskets) {
     return baskets.map(function(basket) {
         var list = basket.map(function(item) {
-            var taxRate =
-                (exempt.indexOf(item.type) === -1 ? 0.1 : 0) +
+            item.price =
+                Math.round(item.priceInDollars * 100); //price in now for sure in cents..
+                var taxRate = (exempt.indexOf(item.type) === -1 ? 0.1 : 0) +
                 (item.imported ? .05 : 0 )
-            item.salesTax = roundUp(taxRate * item.price);
+            item.salesTax = roundUp(taxRate * item.price, 5);
             return [item.quantity + (item.imported ? ' imported' : ''),
-                    item.product + ':', item.price + item.salesTax].join(' ');
+                    item.product + ':' + 
+                    printCurrency(item.price + item.salesTax)].join(' ');
         });
-        var salesTax = basket.reduce(function(p1, p2) {
-            return p2.salesTax + p1;
-        }, 0);
-        list.push('Sales Taxes: ' + salesTax);
+            var salesTax = basket.reduce(function(p1, p2) {
+                return p2.salesTax + p1;
+            }, 0);
+        list.push('Sales Taxes: ' + printCurrency(salesTax));
         var total = basket.reduce(function(p1, p2) {
             return p2.price + p2.salesTax + p1;
         }, 0);
-        list.push('Total: ' + total);
+        list.push('Total: ' + printCurrency(total));
         return list;
-    });
+        });
     
 }
 
@@ -102,5 +113,4 @@ result.forEach(function(basket, i) {
 // 1 packet of headache pills: 9.75
 // 1 imported box of chocolates: 11.85
 // Sales Taxes: 6.70
-// Total: 74.68
-  
+// Total: 74.68v

@@ -72,7 +72,7 @@ glob prok Gold is 57800 Credits
 glob prok Iron is 782 Credits 
 I have no idea what you are talking about
   
-* salestax 
+* DONE salestax 
   file:///home/michieljoris/tmp/TW/TW/Case%20Study%20On%20Sales%20Tax%20Problem%20%28Java%20in%20General%20forum%20at%20JavaRanch%29.html
   file:///home/michieljoris/tmp/TW/TW/Java%20Technology%20Blog%20%20Design%20Problem%20Sales%20Tax%20Problem%20Statement.html
   file:///home/michieljoris/tmp/TW/TW/mikechau%20thoughtworks-sales-tax%20%C2%B7%20GitHub.html
