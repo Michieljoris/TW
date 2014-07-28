@@ -89,11 +89,31 @@ function assign(sessions, talks) {
     });
 }
 
-function assign2(sessions, talks) {
-    //TODO try a depth or breadth first seach
+function compare(c1, c2) {
+    // c1.sort
+    // console.log(c1, c2, c1===c2);
+    return c1 === c2;
+    // if (c1 === c2) console.log('bla');
+}
+
+function checkForDups(combos) {
+    var count = 0;
+    combos.forEach(function(c1, i) {
+        combos.slice(i).forEach(function(c2) {
+            if (compare(c1, c2)) count++;
+        });
+    });
+    console.log(count);
+    // console.log(combos);
+}
+
+// function getCombos(talks, free, maxFree) {
+function getCombos(talks, minLength, maxLength) {
+    // var maxFree = free - minLength;
+    var free = maxLength;
+    
     var combinations = [];
-    var session = sessions[0];
-    var free = session.length;
+    
     var d = 0;
     function fill(from, combo) {
         d++;
@@ -102,25 +122,78 @@ function assign2(sessions, talks) {
         for (var i = from; i< talks.length; i++) {
             var talk = talks[i];
             if (free - talk.length >= 0)  {
-                // talks.splice(i,1);
+                talks.splice(i,1);
                 end = false;
                 free -= talk.length;
                 combo.push(talk);
-                fill(i+1, combo);
+                fill(i, combo);
                 combo.pop();
                 free += talk.length;
-                // talks.splice(i,0,talk);
+                talks.splice(i,0,talk);
             }
         }
         if (end) {
-            combinations.push(combo.slice(0));   
+            // if (free <= maxFree) {
+            if (maxLength - free >= minLength) {
+                var newCombo = combo.slice(0);
+                newCombo.free = free;
+                newCombo.talks = talks.slice(0);
+                combinations.push(newCombo);   
+            }
             // console.log('pushing ', combo, ' ON\n ' , combinations);
         }
     }
     fill(0, []);
-    // console.log(util.inspect(combinations, {depth: 10, colors:true }));
-    console.log(combinations.length);
+    return combinations;
+}
+
+function assign2(sessions, talks, maxFree) {
+    var schedules = [];
+    function recur(s, talks, combos, maxFree) {
+        var session = sessions[s];
+        // console.log(s, session, talks);
+        // if (!session && talks.length) {
+        //     console.log("No sessions left to put talks in!!!");
+        //     return;
+        // }
+        if (s === sessions.length-1) {
+            var l = talks.reduce(function(p, n) {
+                return p + n.length;
+            },0);
+            if (l > session.length) console.log("Last session is too short!!!");
+            var newSchedule = {};
+            newSchedule.day = session.day; newSchedule.start = session.start;
+            newSchedule.talks = talks; newSchedule.when = session.when;
+            // console.log('------------------');
+            
+            combos.push(newSchedule);
+            schedules.push(combos.slice(0));
+            // print(combos);
+            combos.pop();
+            // console.log(util.inspect(combos, {depth: 10, colors:true }));
+            // console.log(newSchedule);
+            return;
+            
+            
+        }
+        var maxSessionLength =  session.free;
+        var minSessionLength = session.when === 'am' ? session.free : session.free - maxFree;
+        var combinations = getCombos(talks, minSessionLength, maxSessionLength);
+        combinations.forEach(function(combo, i) {
+            var talks = combo.talks;
+            combo.day = session.day; combo.start = session.start;
+            combo.talks = combo; combo.when = session.when;
+            combos.push(combo);
+            recur(s+1, talks || [], combos , maxFree - combo.free);
+            combos.pop();
+        });
+            
+    }
+    console.log(talks);
+    recur(0, talks, [], maxFree); 
     
+    // console.log(util.inspect(result, {depth: 10, colors:true }));
+    return schedules;
 }
     
 function process(input, days) {
@@ -139,12 +212,17 @@ function process(input, days) {
     if (totalLength > totalAvailable)
         throw Error('Not enough time available to slot in the talks!!!',
                     totalLength, totalAvailable);
-    assign2(sessions, talks);
+    var schedules = assign2(sessions, talks, totalAvailable - totalLength);
+    schedules.slice(0,2).forEach(function(schedule) {
+        print(schedule);
+    });
+    console.log(schedules.length);
     // print(sessions);
 }
 
-var input = fs.readFileSync('./conference-input.txt', { encoding: 'utf8' }).split('\n');
-input = input.slice(0, input.length -1);
+// var input = fs.readFileSync('./conference-input.txt', { encoding: 'utf8' }).split('\n');
+var input = fs.readFileSync('./test2.txt', { encoding: 'utf8' }).split('\n');
+input = input.slice(0, input.length -1).slice(0,16);
 
 process(input, 2);
 

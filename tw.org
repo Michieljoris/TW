@@ -154,7 +154,7 @@ output- 2c 2d 2e
 input-2
 output-1a 1b.
 This to be done using c++   Answer QuestionXS
-* conference
+* DONE conference
   file:///home/michieljoris/tmp/tw/tw/solution%20for%20tech%20problems%20%20problem%20statement%20-%20conference%20track%20management.html
   problem statement - conference track management
 
@@ -223,4 +223,14 @@ track 2:
 03:15pm ruby vs. clojure for back-end development 30min
 03:45pm a world without hackernews 30min
 04:15pm networking event
+
+
+* TODO
+Clean up conference, brute force breaks down at 16 talks (out of memory), event with the
+requirement of filling the morning sessions from 9 to 12, no free time.
+But the longest talk in emptiest session works fine.
+
+Add comments to each file, and produce doccoh file for each.
+
+
 
