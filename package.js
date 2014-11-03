@@ -104,7 +104,8 @@ module.exports = {
         // "html-builder": "0.1.x",
         "bb-server": "git://github.com/michieljoris/bb-server.git",
         "html-builder": "git://github.com/michieljoris/html-builder.git",
-        "fs-extra": "0.8.x"
+        "fs-extra": "0.8.x",
+        "logthis": "*"
         
 	// "nodemailer": "*",
 	// "dbox": "*",
