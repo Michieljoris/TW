@@ -1,1 +1,1 @@
-denodify.require('scripts/main.js');
+denodify.require('/scripts/main.js');

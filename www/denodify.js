@@ -49,7 +49,8 @@
         var data = m[index].d;
         if (data) return data.exports;
         var func = m[index].f;
-        if (!func) error('load', m[index].route);
+        // if (!func) error('load', m[index].route);
+        if (!func) error('load', m[index].filename);
         func(
             function(moduleid) { //require
                 var requiredIndex = m[index].resolve[moduleid];
@@ -103,11 +104,11 @@
 //module info
     var m = {
 	"0": {
-		"filename": "_node_modules/4c15bbb4021c3da32a2188cf39e8fe03_conway.js",
+		"filename": "/_node_modules/38b5077c71661a4cf3141839bde1fa75_conway.js",
 		"resolve": {}
 	},
 	"1": {
-		"filename": "scripts/main.js",
+		"filename": "/scripts/main.js",
 		"resolve": {
 			"./conway.js": 0
 		}

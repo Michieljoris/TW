@@ -1,0 +1,28 @@
+* TW
+  
+Solutions of tasks you apparently need to do when applying for a job at ThoughtWorks.
+
+To try Conway Game of Life, clone the repo and then in the repo's directory:
+: bin/build
+: bin/serve
+
+Open browser at http://localhost:9001
+
+Set cell size, grid size/weight and use the mouse to click and drag to turn
+cells on. 
+
+Click Save to store a world. Click Re- and call to restore and cycle to saved
+worlds.
+
+Go and step to generate next generations.
+
+Clear to clear the grid :-p
+
+Delete to clear the saved world registers.
+
+It iterates quite quickly and is nice to look at, since I added colors.
+
+Rest of the solutions are in the src folder as node js files. Just execute them
+and see the results.
+
+ 
