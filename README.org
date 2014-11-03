@@ -3,6 +3,7 @@
 Solutions of tasks you apparently need to do when applying for a job at ThoughtWorks.
 
 To try Conway Game of Life, clone the repo and then in the repo's directory:
+: npm install
 : bin/build
 : bin/serve
 
