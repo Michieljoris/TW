@@ -104,7 +104,7 @@
 //module info
     var m = {
 	"0": {
-		"filename": "/_node_modules/38b5077c71661a4cf3141839bde1fa75_conway.js",
+		"filename": "/_node_modules/baf929f8aafe3388a33139dca9541bd2_conway.js",
 		"resolve": {}
 	},
 	"1": {
